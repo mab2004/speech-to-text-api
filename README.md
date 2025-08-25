@@ -59,14 +59,14 @@ Execute the main script in a new cell. This will start the API server and print 
     import nest_asyncio
     from pyngrok import ngrok
     
-    Use nest_asyncio to allow Uvicorn to run in a Colab environment
+    # Use nest_asyncio to allow Uvicorn to run in a Colab environment
     nest_asyncio.apply()
     
     # --- API setup ---
-    app = FastAPI()
+    # app = FastAPI()
     
     # --- Load the Whisper model ---
-    Using a GPU if available
+    # Using a GPU if available
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
     pipe = pipeline("automatic-speech-recognition", model="openai/whisper-base", device=device)
     
@@ -80,8 +80,8 @@ Execute the main script in a new cell. This will start the API server and print 
     transcription = pipe(audio_data)["text"]
     
     return {"transcription": transcription}
-    --- Start the API and create a public URL with ngrok ---
-    This part runs the API and generates a public URL
+    # --- Start the API and create a public URL with ngrok ---
+    # This part runs the API and generates a public URL
     ngrok_tunnel = ngrok.connect(8000)
     print(f'Public URL: {ngrok_tunnel.public_url}')
     
